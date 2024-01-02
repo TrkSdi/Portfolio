@@ -2,6 +2,7 @@
 const form = document.querySelector(".contact-form");
 const contactButton = document.querySelector(".contact-btn");
 const sentMsg = document.querySelector(".submit-button .sent-msg");
+const check = document.querySelector("#robot-email");
 
 function validateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,40 +19,44 @@ function sendMail() {
     email: document.querySelector("#contact-email").value,
     phone: document.querySelector("#contact-phone").value,
     message: document.querySelector("#contact-text").value,
+    check: document.querySelector("#robot-email").value,
   };
 
-  if (params.name.trim() === "") {
-    return;
-  }
+  var isNameValid = params.name.trim() !== "";
+  var isEmailValid = validateEmail(params.email);
+  var isCheckValid = params.check === "15";
+  var isMessageValid = params.message.trim() !== "";
 
-  if (!validateEmail(params.email)) {
-    return;
-  }
+  if (isNameValid && isEmailValid && isCheckValid && isMessageValid) {
+    const serviceId = "service_i9e2dou";
+    const templateId = "template_5vndsge";
 
-  if (params.message.trim() === "") {
-    return;
-  }
+    emailjs
+      .send(serviceId, templateId, params)
+      .then(function (res) {
+        contactButton.style.opacity = 0;
+        sentMsg.style.opacity = 1;
 
-  const serviceId = "service_i9e2dou";
-  const templateId = "template_5vndsge";
-
-  emailjs
-    .send(serviceId, templateId, params)
-    .then(function (res) {
-      contactButton.style.opacity = 0;
-      sentMsg.style.opacity = 1;
-
+        setTimeout(() => {
+          contactButton.style.opacity = 1;
+          sentMsg.style.opacity = 0;
+          form.reset();
+        }, "3000");
+      })
+      .catch();
+  } else {
+    if (!isCheckValid) {
+      document.querySelector("#robot-email").value = "";
+      document.querySelector("#robot-email").placeholder = "Error";
       setTimeout(() => {
-        contactButton.style.opacity = 1;
-        sentMsg.style.opacity = 0;
-      }, "3000");
-    })
-    .catch();
+        document.querySelector("#robot-email").placeholder = "10 + 5?";
+      }, "2000");
+    }
+  }
 }
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  form.reset();
 });
 
 /******************************************************************************************************************************/
@@ -528,6 +533,13 @@ frButtons.forEach((button) => {
 });
 
 /******************************************************************************************************************************/
+
+/* HOVER ON TOUCH */
+
+cards.forEach((card) => {
+  card.addEventListener("touchstart", function () {}, true);
+  card.addEventListener("touchstart", function () {}, true);
+});
 
 /* Project Animation */
 

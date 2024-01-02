@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./app.js" defer></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
     
     <title>Portfolio Tarik SADKHI</title>
@@ -199,9 +200,9 @@
                         <div class="link-container">
                             <h2>Liens</h2>
                             <div class="link-icon">
-                                <div class="linkedin icon"><a href="#"><iconify-icon icon="uil:linkedin" style="color: #232526;" width="60" height="60"></iconify-icon></a></div>
-                                <div class="github icon"><a href="#"><iconify-icon icon="jam:github" style="color: #232526;" width="60" height="60"></iconify-icon></a></div>
-                                <div class="resume icon"><a href="#"><iconify-icon icon="fa:file" style="color: #232526;" width="50" height="50"></iconify-icon></a></div>
+                                <div class="linkedin icon"><a href="https://www.linkedin.com/in/tariksadkhi-fullstack/" target="_blank"><iconify-icon icon="uil:linkedin" style="color: #232526;" width="60" height="60"></iconify-icon></a></div>
+                                <div class="github icon"><a href="https://github.com/TrkSdi" target="_blank"><iconify-icon icon="jam:github" style="color: #232526;" width="60" height="60"></iconify-icon></a></div>
+                                <div class="resume icon"><a href="./data/resume.pdf" download="resume"><iconify-icon icon="fa:file" style="color: #232526;" width="50" height="50"></iconify-icon></a></div>
                             </div>
                         </div>
                     </div>
@@ -235,6 +236,10 @@
                             <label for="contact-text">Message</label>
                             <textarea name="contact-text" id="contact-text" cols="30" maxlength="1000" required></textarea>
                         </div>
+                        <div class="robot-container form">
+                            <label for="robot-text">Robot ?</label>
+                            <input type="text" id="robot-email" required placeholder="5 + 10 ?" oninvalid="alert('ERROR')">
+                        </div>
                         <div class="submit-button">
                             <button class="contact-btn">Envoyer</button>
                             <div class="sent-msg">
@@ -247,6 +252,7 @@
             </div>
         </section>
         <!-- END CONTACT -->
+        <html>
     </main>
 </body>
 </html>
