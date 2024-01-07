@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./temp.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
+    <title>Temp</title>
+</head>
+<body>
+    <section id="contact">
+            <div class="form-container">
+                <form class="contact-form" action="#" onsubmit="sendMail()">
+                    <div class="name form">
+                        <label for="contact-name">Nom</label>
+                        <div class="input-form">
+                            <input type="text" id="contact-name" required>
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="email form">
+                        <label for="contact-email">Email</label>
+                        <div class="input-form">
+                            <input type="email" id="contact-email" required>
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="phone form">
+                        <label for="contact-phone">Téléphone</label>
+                        <div class="input-form">
+                            <input type="tel" id="contact-phone">
+                        <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="text form">
+                        <label for="contact-text">Message</label>
+                        <div class="input-form">
+                            <textarea name="contact-text" id="contact-text" cols="30" maxlength="1000" required></textarea>
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="robot form">
+                        <label for="robot-text">Robot ?</label>
+                        <div class="input-form">
+                            <input type="text" id="robot-email" required placeholder="5 + 10 ?">
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
+                        </div>
+                    </div>
+                    
+                    <div class="submit-button">
+                        <button class="contact-btn">Envoyer</button>
+                        <div class="sent-msg">
+                            <p>Envoyé</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </section>
+
+
+
+    
+</body>
+</html>

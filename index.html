@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="./app.js" defer></script>
     
     <title>Portfolio Tarik SADKHI</title>
 </head>
 <body>
     <main>
-
-        
         <!-- HOME -->
         <section id="home">
             <div class="home-container">
@@ -36,10 +37,22 @@
 
                     <!-- BURGER SELECTION -->
                     <div class="burger-container">
-                        <!-- <div class="burger-close"><iconify-icon icon="mdi:hamburger-menu" style="color: #232526;" width="60" height="60"></iconify-icon></div> -->
+                        <button class="burger-button">
+                            <svg class="hamburger" viewBox="0 0 100 100" width="60">
+                                <rect class="line top" width="80" height="10" x="10" y="25" rx="2"></rect>
+                                <rect class="line middle" width="80" height="10" x="10" y="45" rx="2"></rect>
+                                <rect class="line bottom" width="80" height="10" x="10" y="65" rx="2"></rect>
+                            </svg>
+                        </button>
                         <div class="burger-list">
-                            <!-- <div class="burger-open"><iconify-icon icon="ion:chevron-up-sharp" style="color: #232526;" width="60" height="60" rotate="180deg"></iconify-icon></div> -->
-                            
+                            <div class="burger-menu">
+                                <ul class="menu-list">
+                                    <li class="home-li"><a href="#home">Accueil</a></li>
+                                    <li class="project-li"><a href="#projects">Projets</a></li>
+                                    <li class="about-li"><a href="#about">A propos</a></li>
+                                    <li class="contact-li"><a href="#contact">Contact</a></li>
+                                </ul>
+                            </div>
                             <div class="burger-langage">
                                 <ul>
                                     <li class="btn-fr" id="btn-fr"><a href="#">FR</a></li>
@@ -49,9 +62,9 @@
                             </div>
                             <div class="burger-mode">
                                 <ul>
-                                    <li class="light"><a href="#"><iconify-icon class="light-border" icon="ph:sun" style="color: #232526;" width="15" height="15"></iconify-icon></a></li>
+                                    <li class="light"><a href="#"><iconify-icon class="light-border" icon="ph:sun" style="color: #232526;" width="22" height="22"></iconify-icon></a></li>
                                     <li class="separator"></li>
-                                    <li class="dark"><a href="#"><iconify-icon icon="system-uicons:moon" style="color: #232526;" width="15bb" height="15"></iconify-icon></a></li>
+                                    <li class="dark"><a href="#"><iconify-icon icon="system-uicons:moon" style="color: #232526;" width="22" height="22"></iconify-icon></a></li>
                                 </ul>
                             </div>
                         </div>    
@@ -72,10 +85,11 @@
 
                 <!-- MID ROW -->
                 <div class="home-mid-row">
-                    <div class="profile-pic"><img src="./image/tarik.JPG" alt=""></div>
+                    <div class="profile-pic"><img src="./image/tarik.png" alt=""></div>
                     <div class="description">
-                        <h1>Hello,<br>Je suis Tarik&#160;&#160;&#160;&#59;&#41;<br>Dev full stack,<br>basé sur Montpellier /<br>France.<br></h1>
-                        <h2>Je suis à la recherche d'un stage<br>à partir de mars&#160;&#160;2024 !<br></h2>
+                        <h1>Hello, je suis Tarik&#160;&#160;&#160;&#59;&#41;</h1>
+                        <h2>Développeur Full Stack basé sur<br>Montpellier, France.</h2>
+                        <h3>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !<br></h3>
                     </div>
                 </div>
                 <!-- END MID ROW -->
@@ -100,157 +114,200 @@
 
         <!-- PROJECTS -->
         <section id="projects">
-            <!-- PROJECT CONTAINER -->
-            <div class="projects-container">
-                <div class="card-list">
-                    <!-- CARD -->
-                    <div class="card project-1">
-                        <img src="./image/vintoy-bg.png" alt="vintoy">
-                        <div class="card-content ">
-                            <h2 class="card-title">VINTOY</h2>
-                            <div class="card-icon">
-                                <ul>
-                                    <li class="icon"><iconify-icon icon="ri:javascript-fill" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
-                                    <li class="icon"><iconify-icon icon="simple-icons:python" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
-                                    <li class="icon"><iconify-icon icon="akar-icons:django-fill" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
-                                </ul>
-                            </div>
-                            <p class="card-body">FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse? <br>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </p>
-                            <a href="#" class="button">En développement</a>
-                        </div>
-                    </div>
-                    <div class="card project-2">
-                        <img src="./image/clopple-bg.png" alt="clopple">
-                        <div class="card-content">
-                            <h2 class="card-title">Clopple</h2>
-                            <div class="card-icon">
-                                <ul>
-                                    <li class="icon"><iconify-icon icon="ri:javascript-fill" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
-                            </div>
-                            <p class="card-body project-2">FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse? <br>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </p>
-                            <a href="#" class="button project-2">En développement</a>
-                        </div>
-                    </div>
-                    <div class="card project-3">
-                        <img src="./image/futur-academy-bg.png" alt="futur-academy">
-                        <div class="card-content">
-                            <h2 class="card-title">Future Academie</h2>
-                            <div class="card-icon">
-                                <ul>
-                                    <li class="icon"><iconify-icon icon="teenyicons:react-outline" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
-                                    <li class="icon"><iconify-icon icon="grommet-icons:node" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
-                                </ul>
-                            </div>
-                            <p class="card-body project-3">FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse? <br>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </p>
-                            <a href="#" class="button project-3">En développement</a>
-                        </div>
-                    </div>
-                    <div class="empty-card"></div>
-                    <!-- END CARD -->
-                </div>
+            <!-- Slider main container -->
+            <h2>Projets</h2>
+            <div class="swiper">
                 
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="card project-1">
+                            <img src="./image/vintoy-bg.png" alt="vintoy">
+                            <div class="card-content ">
+                                <h2 class="card-title">VINTOY</h2>
+                                <div class="card-icon">
+                                    <ul>
+                                        <li class="icon"><iconify-icon icon="ri:javascript-fill" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
+                                        <li class="icon"><iconify-icon icon="simple-icons:python" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
+                                        <li class="icon"><iconify-icon icon="akar-icons:django-fill" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
+                                    </ul>
+                                </div>
+                                <p class="card-body">FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse? <br>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit
+                                </p>
+                                <a href="#" class="button">En développement</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card project-2">
+                            <img src="./image/clopple-bg.png" alt="clopple">
+                            <div class="card-content">
+                                <h2 class="card-title">Clopple</h2>
+                                <div class="card-icon">
+                                    <ul>
+                                        <li class="icon"><iconify-icon icon="ri:javascript-fill" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
+                                </div>
+                                <p class="card-body project-2">FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse? <br>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit
+                                </p>
+                                <a href="#" class="button project-2">En développement</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card project-3">
+                            <img src="./image/futur-academy-bg.png" alt="futur-academy">
+                            <div class="card-content">
+                                <h2 class="card-title">Future Academie</h2>
+                                <div class="card-icon">
+                                    <ul>
+                                        <li class="icon"><iconify-icon icon="teenyicons:react-outline" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
+                                        <li class="icon"><iconify-icon icon="grommet-icons:node" style="color: whitesmoke;" width="40" height="40"></iconify-icon></li>
+                                    </ul>
+                                </div>
+                                <p class="card-body project-3">FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse? <br>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit
+                                </p>
+                                <a href="#" class="button project-3">En développement</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+        
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+        
             </div>
-            <!-- END PROJECT CONTAINER -->
         </section>
         <!-- END PROJECTS -->
 
         <!-- ABOUT -->
         <section id="about">
             <div class="about-container">
-                <!-- ABOUT MAIN -->
                 <div class="about-main">
-                    <h1>A propos</h1>
-                    <p>FRENCH ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur non urna sit amet placerat.<br>
-                    <br>
-                    Cras feugiat vehicula justo, euismod lobortis sem. Maecenas nibh elit, iaculis vitae eros id, molestie aliquam mi.<br>
-                    Maecenas feugiat, arcu nec euismod aliquet, dolor sem tempus<br>
-                    <br>
-                    ex, vitae sodales massa felis sed dolor. In faucibus risus ac neque mollis pellentesque.<br>
-                    Phasellus quis sem id sem porta suscipit. Donec a justo id lectus scelerisque iaculis entesque. 
-                    </p>
-                    <div class="skills">
-                        <h2>Compétences</h2>
-                        <div class="skills-container">
-                            <ul class="front-end">
-                                <h3>Front End :</h3>
-                                <li class="javascript icon"><iconify-icon icon="tabler:brand-javascript" style="color: #232526;" width="22" height="22"></iconify-icon>Javascript</li>
-                                <li class="angular icon"><iconify-icon icon="mdi:angular" style="color: #232526;" width="22" height="22"></iconify-icon>Angular</li>
-                            </ul>
-                            <ul class="back-end">
-                                <h3>Back End :</h3>
-                                <li class="python icon"><iconify-icon icon="akar-icons:python-fill" style="color: #232526;" width="22" height="22"></iconify-icon>Python</li>
-                                <li class="django icon"><iconify-icon icon="akar-icons:django-fill" style="color: #232526;" width="22" height="22"></iconify-icon>Django</li>
-                            </ul>
-                            <ul class="api">
-                                <h3>API :</h3>
-                                <li class="django icon"><iconify-icon icon="akar-icons:django-fill" style="color: #232526;" width="22" height="22"></iconify-icon>DRF</li>
-                            </ul>
-                            <ul class="in-progress">
-                                <h3>En cours :</h3>
-                                <li class="react icon"><iconify-icon icon="akar-icons:react-fill" style="color: #232526;" width="22"></iconify-icon>React</li>
-                                <li class="node icon"><iconify-icon icon="akar-icons:node-fill" style="color: #232526;" width="22"></iconify-icon>NodeJS</li>
-                            </ul>
-                        </div>
-                        <div class="link-container">
-                            <h2>Liens</h2>
-                            <div class="link-icon">
-                                <div class="linkedin icon"><a href="https://www.linkedin.com/in/tariksadkhi-fullstack/" target="_blank"><iconify-icon icon="uil:linkedin" style="color: #232526;" width="60" height="60"></iconify-icon></a></div>
-                                <div class="github icon"><a href="https://github.com/TrkSdi" target="_blank"><iconify-icon icon="jam:github" style="color: #232526;" width="60" height="60"></iconify-icon></a></div>
-                                <div class="resume icon"><a href="./data/resume.pdf" download="resume"><iconify-icon icon="fa:file" style="color: #232526;" width="50" height="50"></iconify-icon></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    <h1>A propos de moi</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique itaque harum quasi. Esse omnis exercitationem distinctio sunt commodi neque maiores, aliquid maxime consectetur suscipit nam eaque consequatur sint labore, reprehenderit quis rem. Quos, adipisci. Consequuntur, at est dolorem aperiam blanditiis nulla? Consequatur ipsam sequi velit culpa eius quidem est optio?</p>
                 </div>
-                <!-- END ABOUT MAIN -->
+                <div class="skills">
+                    <h2>Compétences</h2>
+                    <div class="stacks">
+                        
+                        <div class="front">
+                            <h3>Front End :</h3>
+                            <ul>
+                                <div class="stack js">
+                                    <iconify-icon icon="teenyicons:javascript-outline" width="30"></iconify-icon>
+                                    <li>Javascript</li>
+                                </div>
+                                <div class="stack">
+                                    <iconify-icon icon="teenyicons:angular-outline" width="30"></iconify-icon>
+                                    <li>Angular</li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="back">
+                            <h3>Back End :</h3>
+                            <ul>
+                                <div class="stack">
+                                    <iconify-icon icon="teenyicons:python-outline" width="30"></iconify-icon>
+                                    <li>Python</li>
+                                </div>
+                                <div class="stack">
+                                    <iconify-icon icon="akar-icons:django-fill" width="30"></iconify-icon>
+                                    <li>Django</li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="api">
+                            <h3>API :</h3>
+                            <ul>
+                                <div class="stack">
+                                    <iconify-icon icon="akar-icons:django-fill" width="30"></iconify-icon>
+                                    <li>DRF</li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="in-progress">
+                            <h3>En cours :</h3>
+                            <ul>
+                                <div class="stack">
+                                    <iconify-icon icon="akar-icons:react-fill" width="35"></iconify-icon>
+                                    <li>React</li>
+                                </div>
+                                <div class="stack">
+                                    <iconify-icon icon="fontisto:nodejs" width="30"></iconify-icon>
+                                    <li>NodeJS</li>
+                                </div>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="links">
+                    <h2>Liens</h2>
+                    <iconify-icon icon="bi:linkedin" width="60"></iconify-icon>
+                    <iconify-icon icon="fa:github-square" width="60"></iconify-icon>
+                </div>
             </div>
-        
         </section>
         <!-- END ABOUT -->
 
         <!-- CONTACT -->
         <section id="contact">
-            <div class="contact-container">
-                <div class="form-container">
-                    <h1>Contact</h1>
-                    <form class="contact-form" action="#" onsubmit="sendMail()">
-                        <div class="name-container form">
-                            <label for="contact-name">Nom</label>
+            <div class="form-container">
+                <form class="contact-form" action="#" onsubmit="sendMail()">
+                    <div class="name form">
+                        <label for="contact-name">Nom</label>
+                        <div class="input-form">
                             <input type="text" id="contact-name" required>
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
                         </div>
-                        <div class="email-container form">
-                            <label for="contact-email">Email</label>
+                    </div>
+                    <div class="email form">
+                        <label for="contact-email">Email</label>
+                        <div class="input-form">
                             <input type="email" id="contact-email" required>
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
                         </div>
-                        <div class="phone-container form">
-                            <label for="contact-phone">Téléphone</label>
+                    </div>
+                    <div class="phone form">
+                        <label for="contact-phone">Téléphone</label>
+                        <div class="input-form">
                             <input type="tel" id="contact-phone">
+                        <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
                         </div>
-                        <div class="text-container form">
-                            <label for="contact-text">Message</label>
+                    </div>
+                    <div class="text form">
+                        <label for="contact-text">Message</label>
+                        <div class="input-form">
                             <textarea name="contact-text" id="contact-text" cols="30" maxlength="1000" required></textarea>
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
                         </div>
-                        <div class="robot-container form">
-                            <label for="robot-text">Robot ?</label>
-                            <input type="text" id="robot-email" required placeholder="5 + 10 ?" oninvalid="alert('ERROR')">
+                    </div>
+                    <div class="robot form">
+                        <label for="robot-text">Robot ?</label>
+                        <div class="input-form">
+                            <input type="text" id="robot-email" required placeholder="5 + 10 ?">
+                            <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon>
                         </div>
-                        <div class="submit-button">
-                            <button class="contact-btn">Envoyer</button>
-                            <div class="sent-msg">
-                                <p>Envoyé</p>
-                                <iconify-icon class="sent" icon="material-symbols:check" style="color: #232526;" width="30" height="30"></iconify-icon> 
-                            </div>
+                    </div>
+                    
+                    <div class="submit-button">
+                        <button class="contact-btn">Envoyer</button>
+                        <div class="sent-msg">
+                            <p>Envoyé</p>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-        </section>
+
+    </section>
         <!-- END CONTACT -->
         <html>
     </main>

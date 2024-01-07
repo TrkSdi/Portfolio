@@ -60,85 +60,242 @@ form.addEventListener("submit", (e) => {
 });
 
 /******************************************************************************************************************************/
+/*** SLIDER ***/
+const swiper = new Swiper(".swiper", {
+  // Optional parameters
+  direction: "horizontal",
+  loop: false,
 
+  // If we need pagination
+  pagination: {
+    el: ".swiper-pagination",
+  },
+
+  // Navigation arrows
+  navigation: {
+    color: "red",
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: ".swiper-scrollbar",
+  },
+});
+
+/******************************************************************************************************************************/
 /* RESPONSIVE */
 const midRow = document.querySelector(".home-mid-row");
 const description = document.querySelector(".description");
 const about = document.querySelector("#about");
 const project = document.querySelector("#projects");
 const skills = document.querySelector(".skills");
+const links = document.querySelector(".links");
 const contact = document.querySelector("#contact");
+const burgerBtn = document.querySelector(".burger-button");
+const burgerList = document.querySelector(".burger-list");
+const bBtnTop = document.querySelector(".burger-button .top");
+const bBtnMiddle = document.querySelector(".burger-button .middle");
+const bBtnBottom = document.querySelector(".burger-button .bottom");
+const swiperContainer = document.querySelector(".swiper");
+const card = document.querySelector(".card");
+
+burgerBtn.addEventListener("click", () => {
+  burgerBtn.classList.toggle("active");
+  burgerList.classList.toggle("active");
+});
 
 const screen = {
-  small: 430,
-  medium: 820,
+  small: 435,
+  medium: 850,
 };
 
-if (window.innerWidth <= screen.medium) {
-  let title = document.createElement("h1");
-  title.textContent = "Projets";
-
-  project.append(title);
-}
-
-if (window.innerWidth <= screen.small) {
+if (window.innerWidth < screen.small) {
   midRow.innerHTML = `
         <div class="profile-pic">
-            <img src="./image/tarik.JPG" alt="">
-            <h1>Hello,<br>Je suis Tarik&#160;&#160;&#160;&#59;&#41;</h1>
-        </div>
-        <div class="description">
-            <h1>Dev full stack,<br>basé sur Montpellier<br>France.<br></h1>
-            <h2>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !</h2>
-        </div>
-    `;
-  skills.innerHTML = ``;
-
-  let newsection = document.createElement("section");
-  newsection.setAttribute("id", "link-skill");
-  newsection.innerHTML = `
-        <div class="skills">
-            <h1>Compétences</h1>
-            <div class="skills-container">
-                <ul class="front-end">
-                    <h3>Front End :</h3>
-                    <div class="icon-container"> 
-                        <li class="javascript icon"><iconify-icon icon="tabler:brand-javascript" style="color: #232526;" width="22" height="22"></iconify-icon>Javascript</li>
-                        <li class="angular icon"><iconify-icon icon="mdi:angular" style="color: #232526;" width="22" height="22"></iconify-icon>Angular</li>
-                    </div>
-                </ul>
-                <ul class="back-end">
-                    <h3>Back End :</h3>
-                    <div class="icon-container"> 
-                        <li class="python icon"><iconify-icon icon="akar-icons:python-fill" style="color: #232526;" width="22" height="22"></iconify-icon>Python</li>
-                        <li class="django icon"><iconify-icon icon="akar-icons:django-fill" style="color: #232526;" width="22" height="22"></iconify-icon>Django</li>
-                    </div>
-                </ul>
-                <ul class="api">
-                    <h3>API :</h3>
-                        <div class="icon-container"> 
-                        <li class="django icon"><iconify-icon icon="akar-icons:django-fill" style="color: #232526;" width="22" height="22"></iconify-icon>DRF</li>
-                    </div>
-                </ul>
-                <ul class="in-progress">
-                    <h3>En cours:</h3>
-                    <div class="icon-container"> 
-                        <li class="react icon"><iconify-icon icon="akar-icons:react-fill" style="color: #232526;" width="22"></iconify-icon>React</li>
-                        <li class="node icon"><iconify-icon icon="akar-icons:node-fill" style="color: #232526;" width="22"></iconify-icon>NodeJS</li>
-                    </div>
-                </ul>
+            <img src="./image/tarik.png" alt="">
+            <div class="description">
+              <h1>Hello, je suis Tarik&#160;&#59;&#41;</h1>
+              <h2>Développeur Full Stack, basé sur Montpellier, France.</h2>
             </div>
-            <div class="link-container">
-                <h1>Liens</h1>
-                <div class="link-icon">
-                    <div class="linkedin icon"><a href="#"><iconify-icon icon="uil:linkedin" style="color: #232526;" width="40" height="40"></iconify-icon></a></div>
-                    <div class="github icon"><a href="#"><iconify-icon icon="jam:github" style="color: #232526;" width="40" height="40"></iconify-icon></a></div>
-                    <div class="resume icon"><a href="#"><iconify-icon icon="fa:file" style="color: #232526;" width="35" height="35"></iconify-icon></a></div>
+        </div>
+        <div class="request">
+          <h3>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !</h3>
+        </div>
+        
+    `;
+  /* *********** */
+  /* NEW SECTION */
+  let newsection = document.createElement("section");
+  contact.parentNode.insertBefore(newsection, contact);
+  newsection.setAttribute("id", "skills-link");
+  newsection.innerHTML = `
+  <div class="skills">
+                    <h2>Compétences</h2>
+                    <div class="stacks">
+                        <div class="top-row">
+                         <!-- TOP ROW -->
+                          <div class="front">
+                              <h3>Front End :</h3>
+                              <ul>
+                                  <div class="stack js">
+                                      <iconify-icon icon="teenyicons:javascript-outline" width="20"></iconify-icon>
+                                      <li>Javascript</li>
+                                  </div>
+                                  <div class="stack">
+                                      <iconify-icon icon="teenyicons:angular-outline" width="20"></iconify-icon>
+                                      <li>Angular</li>
+                                  </div>
+                              </ul>
+                          </div>
+                          <div class="back">
+                              <h3>Back End :</h3>
+                              <ul>
+                                  <div class="stack">
+                                      <iconify-icon icon="teenyicons:python-outline" width="20"></iconify-icon>
+                                      <li>Python</li>
+                                  </div>
+                                  <div class="stack">
+                                      <iconify-icon icon="akar-icons:django-fill" width="20"></iconify-icon>
+                                      <li>Django</li>
+                                  </div>
+                              </ul>
+                          </div>
+                        </div>
+                        <!-- END TOP ROW -->
+                        <!-- LOW ROW -->
+                        <div class="low-row">
+                          <div class="api">
+                              <h3>API :</h3>
+                              <ul>
+                                  <div class="stack">
+                                      <iconify-icon icon="akar-icons:django-fill" width="20"></iconify-icon>
+                                      <li>DRF</li>
+                                  </div>
+                              </ul>
+                          </div>
+                          <div class="in-progress">
+                              <h3>En cours :</h3>
+                              <ul>
+                                  <div class="stack">
+                                      <iconify-icon icon="akar-icons:react-fill" width="25"></iconify-icon>
+                                      <li>React</li>
+                                  </div>
+                                  <div class="stack">
+                                      <iconify-icon icon="fontisto:nodejs" width="20"></iconify-icon>
+                                      <li>NodeJS</li>
+                                  </div>
+                              </ul>
+                          </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="links">
+                    <h2>Liens</h2>
+                    <iconify-icon icon="bi:linkedin" width="50"></iconify-icon>
+                    <iconify-icon icon="fa:github-square" width="50"></iconify-icon>
                 </div>
             </div>
+  `;
+  skills.innerHTML = "";
+  links.innerHTML = "";
+
+  /* *********** */
+  /* SMALL SCREEN PROJECT */
+  swiperContainer.style.width = window.innerWidth - 60 + "px";
+  card.style.width = window.innerWidth - 60 + "px";
+} else if (window.innerWidth < screen.medium) {
+  midRow.innerHTML = `
+        <div class="profile-pic">
+            <img src="./image/tarik.png" alt="">
+            <div class="description">
+              <h1>Hello, je suis Tarik&#160;&#59;&#41;</h1>
+              <h2>Développeur Full Stack, basé sur Montpellier, France.</h2>
+              <h3>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !</h3>
+            </div>
         </div>
     `;
+
+  /* *********** */
+  /* NEW SECTION */
+  let newsection = document.createElement("section");
   contact.parentNode.insertBefore(newsection, contact);
+  newsection.setAttribute("id", "skills-link");
+  newsection.innerHTML = `
+  <div class="skills">
+                    <h2>Compétences</h2>
+                    <div class="stacks">
+                        <div class="top-row">
+                         <!-- TOP ROW -->
+                          <div class="front">
+                              <h3>Front End :</h3>
+                              <ul>
+                                  <div class="stack js">
+                                      <iconify-icon icon="teenyicons:javascript-outline" width="25"></iconify-icon>
+                                      <li>Javascript</li>
+                                  </div>
+                                  <div class="stack">
+                                      <iconify-icon icon="teenyicons:angular-outline" width="25"></iconify-icon>
+                                      <li>Angular</li>
+                                  </div>
+                              </ul>
+                          </div>
+                          <div class="back">
+                              <h3>Back End :</h3>
+                              <ul>
+                                  <div class="stack">
+                                      <iconify-icon icon="teenyicons:python-outline" width="25"></iconify-icon>
+                                      <li>Python</li>
+                                  </div>
+                                  <div class="stack">
+                                      <iconify-icon icon="akar-icons:django-fill" width="25"></iconify-icon>
+                                      <li>Django</li>
+                                  </div>
+                              </ul>
+                          </div>
+                          <div class="api">
+                              <h3>API :</h3>
+                              <ul>
+                                  <div class="stack">
+                                      <iconify-icon icon="akar-icons:django-fill" width="25"></iconify-icon>
+                                      <li>DRF</li>
+                                  </div>
+                              </ul>
+                          </div>
+                        </div>
+                        <!-- END TOP ROW -->
+                        <!-- LOW ROW -->
+                        <div class="low-row">
+                          <div class="in-progress">
+                              <h3>En cours :</h3>
+                              <ul>
+                                  <div class="stack">
+                                      <iconify-icon icon="akar-icons:react-fill" width="30"></iconify-icon>
+                                      <li>React</li>
+                                  </div>
+                                  <div class="stack">
+                                      <iconify-icon icon="fontisto:nodejs" width="25"></iconify-icon>
+                                      <li>NodeJS</li>
+                                  </div>
+                              </ul>
+                          </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="links">
+                    <h2>Liens</h2>
+                    <iconify-icon icon="bi:linkedin" width="50"></iconify-icon>
+                    <iconify-icon icon="fa:github-square" width="50"></iconify-icon>
+                </div>
+            </div>
+  
+  `;
+  skills.innerHTML = "";
+  links.innerHTML = "";
 }
 
 /******************************************************************************************************************************/
@@ -537,7 +694,6 @@ frButtons.forEach((button) => {
 /* HOVER ON TOUCH */
 
 cards.forEach((card) => {
-  card.addEventListener("touchstart", function () {}, true);
   card.addEventListener("touchstart", function () {}, true);
 });
 
