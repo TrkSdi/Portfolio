@@ -198,7 +198,7 @@
 
     .description h1 {
         font-size: 1.8em;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .description h2 {
@@ -313,7 +313,34 @@
     .links {
         width: 320px;
     }
+
+    /* CARD CONTENT */
+    .card-content h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 80px;
+    }
     
+    .card-content iconify-icon {
+        margin-bottom: 10px;
+        font-size: 25px;
+        
+    }
+    
+    .card-content p {
+        width: 80%;
+        text-align: center;
+        font-size: 0.8rem;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        
+    }
+
+    .card-content a {
+        padding: 0.5rem 1.4rem;
+        font-size: 0.8em;
+    }
 }
 
 /* SMALL MOBILE */
@@ -326,7 +353,7 @@
 
     .description h1 {
         font-size: 1.6em;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .description h2 {

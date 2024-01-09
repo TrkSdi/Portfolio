@@ -132,7 +132,7 @@ section {
 /* END BURGER ANIMATION */
 
 .burger-menu {
-    width: 100px;
+    width: 160px;
 }
 
 .burger-list  {
@@ -299,6 +299,11 @@ section {
     font-weight: 400;
 }
 
+.description span {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 /* LIGHT-DARK SWITCH */
 .darklight {
     color: #232526;
@@ -376,7 +381,8 @@ section {
 } */
 
 .swiper-pagination-bullet-active {
-    background-color: var(--dark-color) !important
+    background-color: var(--dark-color) !important;
+    color: rgba(0, 0, 255, 0.156)
 }
 
 /* PROJECT */
@@ -402,6 +408,7 @@ section {
    overflow: hidden;
    margin-left: auto;
    margin-right: auto;
+   border: 1px solid rgba(35, 37, 38, 0.373);
 }
 
 .card img {
@@ -439,17 +446,35 @@ section {
 .card-content h2 {
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 30px;
+    margin-top: 80px;
 }
 
+.card-content iconify-icon {
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+
 .card-content p {
+    width: 80%;
     text-align: center;
     font-size: 1rem;
-    
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.js-logo iconify-icon {
+    font-size: 60px;
+}
+
+.icon .js {
+    font-size: 100px;
 }
 
 .card-icon  ul {
     display: flex;
+    align-items: center;
 } 
 
 .card-icon  ul li {
@@ -494,18 +519,19 @@ section {
 .about-main h1 {
     font-size: 2.6em;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .about-main p {
-    font-size: 1.6em;
+    font-size: 1.4em;
     margin-bottom: 40px;
+    font-weight: 400;
 }
 
 .skills h2, .links h2 {
     font-size: 2.1em;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .stacks {
@@ -627,4 +653,17 @@ form {
     font-size: 1.4em;
 }
 
+.invalid {
+    display: flex;
+    align-items: end;
+    gap: 30px
+}
 
+.invalid p {
+    color:red;
+    opacity: 0;
+}
+
+.required {
+    font-size: 0.8em;
+}

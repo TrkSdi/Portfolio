@@ -3,6 +3,11 @@ const form = document.querySelector(".contact-form");
 const contactButton = document.querySelector(".contact-btn");
 const sentMsg = document.querySelector(".submit-button .sent-msg");
 const check = document.querySelector("#robot-email");
+const sentIcons = document.querySelectorAll(".input-form .sent");
+const invalidName = document.querySelector(".name .invalid p");
+const invalidEmail = document.querySelector(".email .invalid p");
+const invalidMessage = document.querySelector(".text .invalid p");
+const invalidCheck = document.querySelector(".robot .invalid p");
 
 function validateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,20 +41,44 @@ function sendMail() {
       .then(function (res) {
         contactButton.style.opacity = 0;
         sentMsg.style.opacity = 1;
+        sentIcons.forEach((icon) => {
+          icon.style.opacity = 1;
+        });
 
         setTimeout(() => {
           contactButton.style.opacity = 1;
           sentMsg.style.opacity = 0;
+          sentIcons.forEach((icon) => {
+            icon.style.opacity = 0;
+          });
           form.reset();
         }, "3000");
       })
       .catch();
   } else {
     if (!isCheckValid) {
-      document.querySelector("#robot-email").value = "";
-      document.querySelector("#robot-email").placeholder = "Error";
+      invalidCheck.style.opacity = 1;
       setTimeout(() => {
         document.querySelector("#robot-email").placeholder = "10 + 5?";
+        invalidCheck.style.opacity = 0;
+      }, "2000");
+    } else if (!isEmailValid) {
+      invalidEmail.style.opacity = 1;
+      setTimeout(() => {
+        document.querySelector("#contact-email").value = "";
+        invalidEmail.style.opacity = 0;
+      }, "2000");
+    } else if (!isNameValid) {
+      invalidName.style.opacity = 1;
+      setTimeout(() => {
+        document.querySelector("#contact-name").value = "";
+        invalidName.style.opacity = 0;
+      }, "2000");
+    } else if (!isMessageValid) {
+      invalidMessage.style.opacity = 1;
+      setTimeout(() => {
+        document.querySelector("#contact-text").value = "";
+        invalidMessage.style.opacity = 0;
       }, "2000");
     }
   }
@@ -99,7 +128,7 @@ const bBtnTop = document.querySelector(".burger-button .top");
 const bBtnMiddle = document.querySelector(".burger-button .middle");
 const bBtnBottom = document.querySelector(".burger-button .bottom");
 const swiperContainer = document.querySelector(".swiper");
-const card = document.querySelector(".card");
+const cards = document.querySelectorAll(".card");
 
 burgerBtn.addEventListener("click", () => {
   burgerBtn.classList.toggle("active");
@@ -117,7 +146,7 @@ if (window.innerWidth < screen.small) {
             <img src="./image/tarik.png" alt="">
             <div class="description">
               <h1>Hello, je suis Tarik&#160;&#59;&#41;</h1>
-              <h2>Développeur Full Stack, basé sur Montpellier, France.</h2>
+              <h2>Développeur Full Stack,<br><span>JS & Python</span>,<br>basé sur Montpellier, France.</h2>
             </div>
         </div>
         <div class="request">
@@ -206,14 +235,16 @@ if (window.innerWidth < screen.small) {
   /* *********** */
   /* SMALL SCREEN PROJECT */
   swiperContainer.style.width = window.innerWidth - 60 + "px";
-  card.style.width = window.innerWidth - 60 + "px";
+  cards.forEach((card) => {
+    card.style.width = window.innerWidth - 150 + "px";
+  });
 } else if (window.innerWidth < screen.medium) {
   midRow.innerHTML = `
         <div class="profile-pic">
             <img src="./image/tarik.png" alt="">
             <div class="description">
               <h1>Hello, je suis Tarik&#160;&#59;&#41;</h1>
-              <h2>Développeur Full Stack, basé sur Montpellier, France.</h2>
+              <h2>Développeur Full Stack,<br><span>Javascript & Python</span>,<br> basé sur Montpellier, France.</h2>
               <h3>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !</h3>
             </div>
         </div>
@@ -371,7 +402,12 @@ const separators = document.querySelectorAll(".separator");
 const lines = document.querySelectorAll(".single-line");
 const borderLight = document.querySelector(".light-border");
 const borderDark = document.querySelector(".burger-mode .dark iconify-icon");
-const cards = document.querySelectorAll(".card");
+const hamburger = document.querySelector(".burger-container .burger-button");
+const sliderPrev = document.querySelector(".swiper-button-prev");
+const sliderNext = document.querySelector(".swiper-button-next");
+const bulletActive = document.querySelector(".swiper-pagination-bullet-active");
+const bulletPag = document.querySelector(".swiper-pagination-bullet");
+
 const buttons = document.querySelectorAll(".button");
 const sentBtn = document.querySelectorAll(".contact-btn");
 
@@ -415,6 +451,12 @@ dark.forEach((element) => {
     buttons.forEach((button) => {
       button.style.color = "#232526";
     });
+    burgerList.style.color = "#f5f5f5";
+    burgerList.style.backgroundColor = "#232526";
+    hamburger.style.fill = "#f5f5f5";
+    sliderPrev.style.cssText = "color: #f5f5f5 !important;";
+    sliderNext.style.cssText = "color: #f5f5f5 !important;";
+    bulletActive.style.cssText = "background-color : #f5f5f5 !important;";
   });
 });
 
@@ -451,6 +493,12 @@ light.forEach((element) => {
     buttons.forEach((button) => {
       button.style.color = "#232526";
     });
+    burgerList.style.color = "#232526";
+    burgerList.style.backgroundColor = "#f5f5f5";
+    hamburger.style.fill = "#232526";
+    sliderPrev.style.cssText = "color: #232526 !important;";
+    sliderNext.style.cssText = "color: #232526 !important;";
+    bulletActive.style.cssText = "background-color : #232526 !important;";
   });
 });
 
@@ -495,197 +543,220 @@ if (isChrome || isSafari) {
 const frButtons = document.querySelectorAll(".btn-fr");
 const enButtons = document.querySelectorAll(".btn-en");
 
-const frBtnMain = document.querySelector(".fr-en .btn-fr a");
-const enBtnMain = document.querySelector(".fr-en .btn-en a");
-const frBtnResp = document.querySelector(".burger-langage .btn-fr a");
-const enBtnResp = document.querySelector(".burger-langage .btn-en a");
+const frLink = document.querySelectorAll(".btn-fr a");
+const enLink = document.querySelectorAll(".btn-en a");
 
 /* ELEMENTS */
 /* MENU */
-const homeTxt = document.querySelector(".home-li a");
-const projectTxt = document.querySelector(".project-li a");
-const aboutTxt = document.querySelector(".about-li a");
+const homeTxt = document.querySelectorAll(".home-li a");
+const projectTxt = document.querySelectorAll(".project-li a");
+const aboutTxt = document.querySelectorAll(".about-li a");
+const skillBrg = document.querySelector(".skills-li a");
+
 /* DARK SWITCH */
 const darkTxt = document.querySelector(".darklight-list .dark a");
 const lightTxt = document.querySelector(".darklight-list .light a");
-/* PROJECTS */
-const project1Txt = document.querySelector(".card.project-1 p");
-const project1Btn = document.querySelector(".card.project-1 a");
-const project2Txt = document.querySelector(".card.project-2 p");
-const project2Btn = document.querySelector(".card.project-2 a");
-const project3Txt = document.querySelector(".card.project-3 p");
-const project3Btn = document.querySelector(".card.project-3 a");
-/* ABOUT */
-const aboutTitleTxt = document.querySelector(".about-main h1");
-const aboutMainTxt = document.querySelector(".about-main p");
-const skillsTitleTxt = document.querySelector(".skills h2");
-const inProgressTxt = document.querySelector(".in-progress h3");
-const linksTxt = document.querySelector(".link-container h2");
-/* CONTACT */
-const nameTxt = document.querySelector(".name-container label");
-const phoneTxt = document.querySelector(".phone-container label");
-const sendTxt = document.querySelector(".submit-button button");
-const sentTxt = document.querySelector(".sent-msg p");
 
-/* INITIAL */
-const descriptionInitial = description.innerHTML;
-const midRowInitial = midRow;
-const homeTxtInitial = homeTxt;
-const projectTxtInitial = projectTxt;
-const aboutTxtInitial = aboutTxt;
-const darkTxtInitial = darkTxt;
-const lightTxtInitial = lightTxt;
-const project1TxtInitial = project1Txt;
-const project1BtnInitial = project1Btn;
-const project2TxtInitial = project2Txt;
-const project2BtnInitial = project2Btn;
-const project3TxtInitial = project3Txt;
-const project3BtnInitial = project3Btn;
-const aboutTitleTxtInitial = aboutTitleTxt;
-const aboutMainTxtInitial = aboutMainTxt;
-const skillsTitleTxtInitial = skillsTitleTxt;
-const inProgressTxtInitial = inProgressTxt;
-const linksTxtInitial = linksTxt;
-const nameTxtInitial = nameTxt;
-const phoneTxtInitial = phoneTxt;
-const sendTxtInitial = sendTxt;
-const sentTxtInitial = sentTxt;
+/* DESCRIPTION */
+const descriptionContent = document.querySelector(".description");
+
+/* PROJECTS */
+const descriptionProject1 = document.querySelector(".project-1 p");
+const linkProject1 = document.querySelector(".project-1 a");
+const descriptionProject2 = document.querySelector(".project-2 p");
+const linkProject2 = document.querySelector(".project-2 a");
+const descriptionProject3 = document.querySelector(".project-3 p");
+const linkProject3 = document.querySelector(".project-3 a");
+
+/* ABOUT SKILLS */
+const aboutMain = document.querySelector(".about-main");
+const skillsTitle = document.querySelector(".skills h2");
+const linksTitle = document.querySelector(".links h2");
+
+/* CONTACT */
+const nameTxt = document.querySelector(".name label");
+const phoneTxt = document.querySelector(".phone label");
+const requiredTxt = document.querySelector(".required");
+const sendTxt = document.querySelector(".contact-btn");
+const sentTxt = document.querySelector(".sent-msg p");
+const invalidTxt = document.querySelectorAll(".invalid p");
 
 enButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    frBtnMain.style.textDecoration = "none";
-    enBtnMain.style.textDecoration = "underline";
-    frBtnResp.style.textDecoration = "none";
-    enBtnResp.style.textDecoration = "underline";
-
-    description.innerHTML = `
-    <h1>Hello,<br>I'm Tarik&#160;&#160;&#160;&#59;&#41;&#160;&#160;<br>Dev full stack,<br>based at Montpellier /<br>France.<br></h1>
-    <h2>I'm looking for an internship<br>starting March&#160;&#160;2024 !<br></h2>
-    `;
-    if (window.innerWidth <= screen.small) {
+    if (window.innerWidth < screen.small) {
+      midRow.innerHTML = `
+      <div class="profile-pic">
+            <img src="./image/tarik.png" alt="">
+            <div class="description">
+              <h1>Hello, I'm Tarik&#160;&#59;&#41;</h1>
+              <h2>Full Stack Developper,<br><span>JS & Python</span>,<br>based at Montpellier, France.</h2>
+            </div>
+        </div>
+        <div class="request">
+          <h3>I'm looking for an internship starting in March&#160;&#160;2024 !</h3>
+        </div>
+      `;
+    } else if (window.innerWidth < screen.medium) {
       midRow.innerHTML = `
         <div class="profile-pic">
-            <img src="./image/tarik.JPG" alt="">
-            <h1>Hello,<br>I'm Tarik&#160;&#160;&#160;&#59;&#41;</h1>
-        </div>
-        <div class="description">
-            <h1>Full stack dev,<br>based at Montpellier<br>France.<br></h1>
-            <h2>I'm looking for an internship starting March&#160;&#160;2024 !</h2>
+            <img src="./image/tarik.png" alt="">
+            <div class="description">
+              <h1>Hello, I'm Tarik&#160;&#59;&#41;</h1>
+              <h2>Full Stack Developper,<br><span>Javascript & Python</span>,<br>based at Montpellier, France.</h2>
+              <h3>I'm looking for an internship starting in March&#160;&#160;2024 !</h3>
+            </div>
         </div>
     `;
+    } else {
+      descriptionContent.innerHTML = `
+    <h1>Hello, I'm Tarik&#160;&#160;&#160;&#59;&#41;</h1>
+    <h2>Full Stack Developper,<br><span>Javascript & Python</span>,<br>based at Montpellier, France.</h2>
+    <h3>I'm looking for an internship starting in March&#160;&#160;2024 !<br></h3>
+    `;
     }
-    homeTxt.textContent = "Home";
-    projectTxt.textContent = "Projects";
-    aboutTxt.textContent = "About";
+    /* MENU */
+    homeTxt.forEach((element) => {
+      element.textContent = "Home";
+    });
+    projectTxt.forEach((element) => {
+      element.textContent = "Projects";
+    });
+    aboutTxt.forEach((element) => {
+      element.textContent = "About";
+    });
+    skillBrg.textContent = "Skills";
+    /* DARK LIGHT */
     darkTxt.textContent = "Dark";
     lightTxt.textContent = "Light";
-    project1Txt.innerHTML = `ENGLISH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit`;
-    project1Btn.textContent = "In Progress";
-    project2Txt.innerHTML = `ENGLISH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit`;
-    project2Btn.textContent = "In Progress";
-    project3Txt.innerHTML = `ENGLISH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit`;
-    project3Btn.textContent = "In Progress";
-    aboutTitleTxt.textContent = "About";
-    aboutMainTxt.innerHTML = `
-    <p>ENGLISH ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur non urna sit amet placerat.<br>
-    <br>
-    Cras feugiat vehicula justo, euismod lobortis sem. Maecenas nibh elit, iaculis vitae eros id, molestie aliquam mi.<br>
-    Maecenas feugiat, arcu nec euismod aliquet, dolor sem tempus<br>
-    <br>
-    ex, vitae sodales massa felis sed dolor. In faucibus risus ac neque mollis pellentesque.<br>
-    Phasellus quis sem id sem porta suscipit. Donec a justo id lectus scelerisque iaculis entesque. 
-    </p>
+    /* PROJECTS */
+    descriptionProject1.innerHTML = `
+    Welcome to my portfolio page, 100% HTML, CSS and Javascript.<br>
+    I learned a lot from designing and implementing it.
     `;
-
-    if (window.innerWidth > screen.small) {
-      skillsTitleTxt.textContent = "Skills";
-      inProgressTxt.textContent = "Learning:";
-      linksTxt.textContent = "Links";
-    } else if (window.innerWidth <= screen.small) {
-      const skillsTitleTxt = document.querySelector("#link-skill h1");
-      const inProgressTxt = document.querySelector(
-        "#link-skill .in-progress h3"
-      );
-      const linksTxt = document.querySelector("#link-skill .link-container h1");
-      const projectTitleTxt = document.querySelector("#projects h1");
-      skillsTitleTxt.textContent = "Skills";
-      inProgressTxt.textContent = "Learning:";
-      linksTxt.textContent = "Links";
-      projectTitleTxt.textContent = "Projects";
-    }
-    nameTxt.textContent = "Name";
+    linkProject1.textContent = "You're already there";
+    descriptionProject2.innerHTML = `
+    As a collector of vintage toys, I loved having a Vinted clone site dedicated to collectors<br>
+    Personal project in progress.
+    `;
+    linkProject2.textContent = "In Progress";
+    descriptionProject3.innerHTML = `
+    Group project based on data science, an interface that identifies establishments based on their geographical location and performance.
+    `;
+    linkProject3.textContent = "In Progress";
+    /* ABOUT SKILLS */
+    aboutMain.innerHTML = `
+    <h1>About me</h1>
+    <p>After 12 years' working experience at Apple Retail, I'm currently in the process of a professional reconversion, of which I've taken the first step by becoming a Back End application and website developer in Python.<br><br>
+    I'm currently studying to become a Full Stack developer, and I'm open to proposals for collaboration in Montpellier and the surrounding area.</p>
+    `;
+    skillsTitle.textContent = "Skills";
+    linksTitle.textContent = "Links";
+    /* CONTACT */
+    invalidTxt.forEach((element) => {
+      element.textContent = "Invalid input";
+    });
+    nameTxt.textContent = "Name*";
     phoneTxt.textContent = "Phone";
+    requiredTxt.textContent = "* Required";
     sendTxt.textContent = "Send";
     sentTxt.textContent = "Sent";
+    /* BUTTON UNDERLINE */
+    enLink.forEach((element) => {
+      element.style.textDecoration = "underline";
+    });
+    frLink.forEach((element) => {
+      element.style.textDecoration = "none";
+    });
   });
 });
 
 frButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    enBtnMain.style.textDecoration = "none";
-    frBtnMain.style.textDecoration = "underline";
-    enBtnResp.style.textDecoration = "none";
-    frBtnResp.style.textDecoration = "underline";
-
-    description.innerHTML = `
-    <h1>Hello,<br>Je suis Tarik&#160;&#160;&#160;&#59;&#41;<br>Dev full stack,<br>basé sur Montpellier /<br>France.<br></h1>
-    <h2>Je suis à la recherche d'un stage<br>à partir de mars&#160;&#160;2024 !<br></h2>
-    `;
-    if (window.innerWidth <= screen.small) {
+    /* DESCRIPTION */
+    if (window.innerWidth < screen.small) {
+      midRow.innerHTML = `
+      <div class="profile-pic">
+            <img src="./image/tarik.png" alt="">
+            <div class="description">
+              <h1>Hello, je suis Tarik&#160;&#59;&#41;</h1>
+              <h2>Développeur Full Stack,<br><span>JS & Python</span>,<br>basé sur Montpellier, France.</h2>
+            </div>
+        </div>
+        <div class="request">
+          <h3>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !</h3>
+        </div>
+      `;
+    } else if (window.innerWidth < screen.medium) {
       midRow.innerHTML = `
         <div class="profile-pic">
-            <img src="./image/tarik.JPG" alt="">
-            <h1>Hello,<br>Je suis Tarik&#160;&#160;&#160;&#59;&#41;</h1>
-        </div>
-        <div class="description">
-            <h1>Dev full stack,<br>basé sur Montpellier<br>France.<br></h1>
-            <h2>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !</h2>
+            <img src="./image/tarik.png" alt="">
+            <div class="description">
+              <h1>Hello, je suis Tarik&#160;&#59;&#41;</h1>
+              <h2>Développeur Full Stack,<br><span>Javascript & Python</span>,<br> basé sur Montpellier, France.</h2>
+              <h3>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !</h3>
+            </div>
         </div>
     `;
+    } else {
+      descriptionContent.innerHTML = `
+    <h1>Hello, je suis Tarik&#160;&#160;&#160;&#59;&#41;</h1>
+    <h2>Développeur Full Stack, <br><span>Javascript & Python</span>,<br> basé sur Montpellier, France.</h2>
+    <h3>Je suis à la recherche d'un stage à partir de mars&#160;&#160;2024 !<br></h3>
+    `;
     }
-    homeTxt.textContent = "Accueil";
-    projectTxt.textContent = "Projets";
-    aboutTxt.textContent = "A propos";
+    /* MENU */
+    homeTxt.forEach((element) => {
+      element.textContent = "Accueil";
+    });
+    projectTxt.forEach((element) => {
+      element.textContent = "Projets";
+    });
+    aboutTxt.forEach((element) => {
+      element.textContent = "A propos";
+    });
+    skillBrg.textContent = "Compétences";
+    /* DARK LIGHT */
     darkTxt.textContent = "Sombre";
     lightTxt.textContent = "Clair";
-    project1Txt.innerHTML = `FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit`;
-    project1Btn.textContent = "En cours";
-    project2Txt.innerHTML = `FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit`;
-    project2Btn.textContent = "En cours";
-    project3Txt.innerHTML = `FRENCH ipsum dolor sit amet consectetur adipisicing elit. Aliquam, esse?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit`;
-    project3Btn.textContent = "En cours";
-    aboutTitleTxt.textContent = "A propos";
-    aboutMainTxt.innerHTML = `
-    <p>FRENCH ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur non urna sit amet placerat.<br>
-    <br>
-    Cras feugiat vehicula justo, euismod lobortis sem. Maecenas nibh elit, iaculis vitae eros id, molestie aliquam mi.<br>
-    Maecenas feugiat, arcu nec euismod aliquet, dolor sem tempus<br>
-    <br>
-    ex, vitae sodales massa felis sed dolor. In faucibus risus ac neque mollis pellentesque.<br>
-    Phasellus quis sem id sem porta suscipit. Donec a justo id lectus scelerisque iaculis entesque. 
-    </p>
+    /* PROJECTS */
+    descriptionProject1.innerHTML = `
+    Bienvenue sur ma page professionnelle, 100% HTML, CSS et Javascript.<br>
+    J'ai beaucoup appris lors de sa conception et implémentation.
     `;
-
-    if (window.innerWidth > screen.small) {
-      skillsTitleTxt.textContent = "Compétences";
-      inProgressTxt.textContent = "En cours:";
-      linksTxt.textContent = "Liens";
-    } else if (window.innerWidth <= screen.small) {
-      const skillsTitleTxt = document.querySelector("#link-skill h1");
-      const inProgressTxt = document.querySelector(
-        "#link-skill .in-progress h3"
-      );
-      const linksTxt = document.querySelector("#link-skill .link-container h1");
-      const projectTitleTxt = document.querySelector("#projects h1");
-      skillsTitleTxt.textContent = "Compétences";
-      inProgressTxt.textContent = "En cours:";
-      linksTxt.textContent = "Liens";
-      projectTitleTxt.textContent = "Projets";
-    }
-    nameTxt.textContent = "Nom";
+    linkProject1.textContent = "Vous y êtes";
+    descriptionProject2.innerHTML = `
+    Collectionneur de jouets vintage, j'adorais avoir un site clone de Vinted, dédié aux collectionneurs<br>
+    Projet personnel en cours de création.
+    `;
+    linkProject2.textContent = "En développement";
+    descriptionProject3.innerHTML = `
+    Projet de fin d'études en groupe, axé sur de la data science, interface qui permet d'identifier un établissement en fonction de leur situation géographique et performances.
+    `;
+    linkProject3.textContent = "En développement";
+    /* ABOUT SKILLS */
+    aboutMain.innerHTML = `
+    <h1>A propos de moi</h1>
+    <p>Riche de 12 ans d'expérience au sein d'Apple Retail, j'entame actuellement une reconversion professionnelle, dont j'ai franchi une première étape en devenant développeur d'applications et site web Back End en Python.<br><br>
+    Actuellement en formation en tant que développeur Full Stack, je reste ouvert aux propositions de collaborations sur Montpellier et ses alentours.</p>
+    `;
+    skillsTitle.textContent = "Compétences";
+    linksTitle.textContent = "Liens";
+    /* CONTACT */
+    invalidTxt.forEach((element) => {
+      element.textContent = "Saisie invalide";
+    });
+    nameTxt.textContent = "Nom*";
     phoneTxt.textContent = "Téléphone";
+    requiredTxt.textContent = "* Requis";
     sendTxt.textContent = "Envoyer";
     sentTxt.textContent = "Envoyé";
+    /* BUTTON UNDERLINE */
+    enLink.forEach((element) => {
+      element.style.textDecoration = "none";
+    });
+    frLink.forEach((element) => {
+      element.style.textDecoration = "underline";
+    });
   });
 });
 
