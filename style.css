@@ -135,7 +135,7 @@ section {
     width: 160px;
 }
 
-.burger-list  {
+.burger-list {
     visibility: hidden;
     display: flex;
     flex-direction: column;
@@ -147,14 +147,13 @@ section {
     position: absolute;
     right: 0px;
     top: 50px;
-    transform: translateX(100px);
-    transition: 300ms ease-out;
+    
+    transition: opacity 300ms ease;
 }
 
-.burger-list.active   {
+.burger-list.active {
     visibility: visible;
-    transition: 300ms ease;
-    transform: translateX(0);
+    
 }
 
 .burger-container ul li {
@@ -570,6 +569,22 @@ section {
     margin-right: 20px;
 }
 
+.links a {
+    text-decoration: none;
+    color: var(--dark-color)
+}
+
+.links a:visited {
+    text-decoration: none;
+    color: var(--dark-color)
+}
+
+.links .resume {
+    border: 2px solid var(--dark-color);
+    border-radius: 10px;
+    background-color: var(--dark-color);
+}
+
 /* CONTACT */
 #contact {
     width: 100wh;
@@ -597,7 +612,7 @@ form {
 }
 
 .form label {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .input-form {
@@ -605,6 +620,7 @@ form {
     align-items: center;
     margin-top: 5px;
     margin-bottom: 20px;
+    
 }
 
 .input-form :is(input, textarea) {
@@ -614,6 +630,7 @@ form {
     padding: 12px;
     border-radius: 10px;
     resize: none;
+    font-size: 1.2em;
 }
 
 .input-form textarea {
@@ -622,6 +639,7 @@ form {
 
 .input-form iconify-icon {
     opacity: 0;
+    margin-left: 10px;
 }
 
 .submit-button {
@@ -655,11 +673,11 @@ form {
 
 .invalid {
     display: flex;
-    align-items: end;
-    gap: 30px
+    align-items: center;
+    gap: 20px
 }
 
-.invalid p {
+.invalid small {
     color:red;
     opacity: 0;
 }

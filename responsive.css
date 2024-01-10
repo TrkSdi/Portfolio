@@ -235,6 +235,7 @@
     .input-form :is(input, textarea) {
         width: 320px;
         padding: 10px;
+        font-size: 0.8em;
     }
     
     .input-form textarea {
@@ -303,11 +304,15 @@
         display: flex;
         margin-bottom: 30px;
         justify-content: space-between;
+        margin-right: 15px;
     }
+
+    
 
     .stacks .low-row {
         display: flex;
         justify-content: space-between;
+        margin-right: 15px;
     }
 
     .links {
@@ -381,5 +386,60 @@
     .submit-button {
         width: 280px;
         
+    }
+
+    .stacks .low-row, .stacks .top-row {
+        margin-right: 20px;
+    }
+
+    
+}
+
+/* MINI MOBILE */
+@media (max-width: 380px) {
+    /* CARD CONTENT */
+    .card-content h2 {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 90px;
+    }
+    
+    .card-content iconify-icon {
+        margin-bottom: 0px;
+        font-size: 25px;
+        
+    }
+    
+    .card-content p {
+        width: 80%;
+        text-align: center;
+        font-size: 0.7em;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        
+    }
+
+    .card-content a {
+        padding: 0.5rem 1.4rem;
+        font-size: 0.6em;
+    }
+}
+
+
+/* SMALL HEIGHT */
+@media (min-width: 435px) {
+    body { 
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .advice h1 {
+        margin-bottom: 50px;
+        text-align: center;
+        font-size: 1rem;
     }
 }

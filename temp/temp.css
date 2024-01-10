@@ -8,88 +8,15 @@
     scroll-behavior: smooth;
 }
 
-#contact {
-    width: 100wh;
+body { 
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-}
-
-.form-container {
-    width: 900px;
-    height: 1000px;
-    background-color: aquamarine;
-    display: flex;
     justify-content: center;
-    
-}
-
-form {
-    max-width: 800px;
-    background-color: bisque;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 30px;
 }
 
-.form label {
-    font-size: 1.4rem;
-}
-
-.input-form {
-    display: flex;
-    align-items: center;
-    margin-top: 0px;
-    margin-bottom: 20px;
-}
-
-.input-form :is(input, textarea) {
-    width: 400px;
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-    resize: none;
-}
-
-.input-form textarea {
-    height: 200px;
-}
-
-.input-form iconify-icon {
-    opacity: 1;
-}
-
-.submit-button {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    width: 400px;
-    position: relative;
-    padding-right: 10px;
-    padding-left: 30px;
-}
-
-.contact-btn {
-    color : #232526;
-    font-size: 1.4em;
-    margin-top: 5px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
-    opacity: 1;
-    z-index: 10;
-}
-
-.submit-button .sent-msg {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-    position: absolute;
-    opacity: 0;
-    font-size: 1.4em;
+h1 {
+    margin-bottom: 50px;
+    text-align: center;
 }

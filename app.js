@@ -4,10 +4,10 @@ const contactButton = document.querySelector(".contact-btn");
 const sentMsg = document.querySelector(".submit-button .sent-msg");
 const check = document.querySelector("#robot-email");
 const sentIcons = document.querySelectorAll(".input-form .sent");
-const invalidName = document.querySelector(".name .invalid p");
-const invalidEmail = document.querySelector(".email .invalid p");
-const invalidMessage = document.querySelector(".text .invalid p");
-const invalidCheck = document.querySelector(".robot .invalid p");
+const invalidName = document.querySelector(".name .invalid small");
+const invalidEmail = document.querySelector(".email .invalid small");
+const invalidMessage = document.querySelector(".text .invalid small");
+const invalidCheck = document.querySelector(".robot .invalid small");
 
 function validateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -115,6 +115,7 @@ const swiper = new Swiper(".swiper", {
 
 /******************************************************************************************************************************/
 /* RESPONSIVE */
+const body = document.querySelector("body");
 const midRow = document.querySelector(".home-mid-row");
 const description = document.querySelector(".description");
 const about = document.querySelector("#about");
@@ -135,10 +136,32 @@ burgerBtn.addEventListener("click", () => {
   burgerList.classList.toggle("active");
 });
 
+document.addEventListener("click", (event) => {
+  const isClickInsideList = burgerList.contains(event.target);
+  const isClickOnBurgerBtn = burgerBtn.contains(event.target);
+
+  // Vérifiez si le clic n'est ni sur le bouton du burger ni à l'intérieur de la liste
+  if (!isClickInsideList && !isClickOnBurgerBtn) {
+    // Réduisez le menu en retirant la classe "active"
+    burgerBtn.classList.remove("active");
+    burgerList.classList.remove("active");
+  }
+});
+
 const screen = {
   small: 435,
   medium: 850,
 };
+
+if (window.innerHeight < screen.small) {
+  body.innerHTML = `
+  <div class="advice">
+        <h1>Faites pivoter votre portable pour une meilleure expérience visuelle &#59;&#41;</h1>
+        <h1>Rotate your mobile for a better viewing experience &#59;&#41;</h1>
+    </div>
+   <iconify-icon icon="material-symbols:screen-rotation-outline-sharp" style="color: #232526;" width="60"></iconify-icon>
+  `;
+}
 
 if (window.innerWidth < screen.small) {
   midRow.innerHTML = `
@@ -224,8 +247,9 @@ if (window.innerWidth < screen.small) {
                 </div>
                 <div class="links">
                     <h2>Liens</h2>
-                    <iconify-icon icon="bi:linkedin" width="50"></iconify-icon>
-                    <iconify-icon icon="fa:github-square" width="50"></iconify-icon>
+                    <a href="https://www.linkedin.com/in/tariksadkhi-fullstack/" target="_blank"><iconify-icon icon="bi:linkedin" width="50"></iconify-icon></a>
+                    <a href="https://github.com/TrkSdi" target="_blank"><iconify-icon icon="fa:github-square" width="50"></iconify-icon></a>
+                    <a href="./data/resume.pdf" download="CV-Tarik-Sadkhi"><iconify-icon class="resume" icon="academicons:cv" style="color: #f5f5f5;" width="46"></iconify-icon></a>
                 </div>
             </div>
   `;
@@ -393,7 +417,7 @@ const lightResponsive = document.querySelector(
 );
 
 /* ELEMENTS */
-const body = document.querySelector("body");
+
 const sections = document.querySelectorAll("section");
 const allLink = document.querySelectorAll("a");
 const icons = document.querySelectorAll("iconify-icon");
@@ -579,7 +603,7 @@ const phoneTxt = document.querySelector(".phone label");
 const requiredTxt = document.querySelector(".required");
 const sendTxt = document.querySelector(".contact-btn");
 const sentTxt = document.querySelector(".sent-msg p");
-const invalidTxt = document.querySelectorAll(".invalid p");
+const invalidTxt = document.querySelectorAll(".invalid small");
 
 enButtons.forEach((button) => {
   button.addEventListener("click", () => {
